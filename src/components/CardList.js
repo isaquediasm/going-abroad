@@ -3,7 +3,12 @@ import Card from './Card';
 
 class CardList extends Component {
 	render() {
-		console.log(this.props.items.results);
+		this.props.items.results.map(item => {
+			if(item.hostName === 'DragonflyHill') {
+				console.log(item);
+			}
+		});
+
 		return(
 			<div>
 				{
