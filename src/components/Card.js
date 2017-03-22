@@ -18,9 +18,9 @@ class Card extends Component {
   }
 
   /**
-	* Render the room's picture based on the passed parameter. If the parameter is undefined,
-	* catch the first home picture.
-	*
+  * Render the room's picture based on the passed parameter. If the parameter is undefined,
+  * catch the first home picture.
+  *
 	* @param {string} roomPhoto
 	*/
   renderRoomPhoto(roomPhoto = this.props.data.homePhotosWithOrder[0].split(',')[0]) {
@@ -33,8 +33,8 @@ class Card extends Component {
     return <div className="image" style={style}></div>;
   }
 
-  /**
-	* Render the price with the respective currency
+  /***
+  * Render the price with the respective currency
 	**/
   renderPrice(price) {
     const availableCurrencies = {
@@ -66,10 +66,10 @@ class Card extends Component {
 
         <div className="info">
           <h4 className="title">{`${hostName}'s Home`}</h4>
-					<p className="place">{homeCity}</p>
+          <p className="place">{homeCity}</p>
           <p className="languages">{languages}</p>
         </div>
-			</div>
+      </div>
     );
   }
 }
