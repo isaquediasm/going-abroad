@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import CardList from './components/CardList';
-import logo from './logo.svg';
+import OffersMap from './components/OffersMap';
 import data from './data.js';
+import GoogleMapReact from 'google-map-react';
 import './App.css';
 
 class App extends Component {
@@ -9,12 +10,9 @@ class App extends Component {
     console.log(data);
     return (
       <div className="app">
-        <div className="app__header">
-        </div>
         <div className="content">
-          <div className="map">
-          <CardList items={data}/>
-          </div>
+          <CardList data={data} />
+          <OffersMap data={data} />
         </div>
       </div>
     );

@@ -5,10 +5,10 @@ const domain = 'https://abroadwith.imgix.net';
 
 class Card extends Component {
   /**
-		* Render host's info like picture.
-		*
-		* @param {string} hostPhoto
-		*/
+  * Render host's info like picture.
+  *
+  * @param {string} hostPhoto
+  */
   renderHostInfo(hostPhoto = profile) {
     return (
       <div className="host">
@@ -18,11 +18,11 @@ class Card extends Component {
   }
 
   /**
-		* Render the room's picture based on the passed parameter. If the parameter is undefined,
-		* catch the first home picture.
-		*
-		* @param {string} roomPhoto
-		*/
+	* Render the room's picture based on the passed parameter. If the parameter is undefined,
+	* catch the first home picture.
+	*
+	* @param {string} roomPhoto
+	*/
   renderRoomPhoto(roomPhoto = this.props.data.homePhotosWithOrder[0].split(',')[0]) {
     const style = {
       'backgroundImage': `url(${domain + roomPhoto})`,
@@ -33,18 +33,35 @@ class Card extends Component {
     return <div className="image" style={style}></div>;
   }
 
+  renderPrice(price) {
+    const availableCurrencies = {
+      'EUR': '€',
+      'USD': '$'
+    }
+
+    let userCurrency = availableCurrencies[this.props.currency];
+
+    return <div className="price">{ userCurrency + price.toFixed(2) }</div>
+  }
+
   render() {
-    let {roomPhoto, hostPhoto, hostName, homeCity} = this.props.data;
+    let { roomPhoto, hostPhoto, hostName, homeCity, price, interestedLanguages } = this.props.data;
+
+    const languages = interestedLanguages && interestedLanguages
+      .map((lang, idx) => <span key={idx}>{lang}</span>);
 
     return (
       <div className="card">
         {this.renderRoomPhoto(roomPhoto)}
+        {this.renderPrice(price)}
         {this.renderHostInfo(hostPhoto && `${domain + hostPhoto}`)}
 
         <div className="info">
-          <h4 className="title">{`${hostName}'s Home` } </h4>
-					<p className="place">{ homeCity }</p > <p className="place">ITA, ENG</p> </div>
-					</div>
+          <h4 className="title">{`${hostName}'s Home`}</h4>
+					<p className="place">{homeCity}</p >
+          <p className="languages">{languages}</p>
+        </div>
+			</div>
     );
   }
 }
