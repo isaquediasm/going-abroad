@@ -21,8 +21,8 @@ class Card extends Component {
   * Render the room's picture based on the passed parameter. If the parameter is undefined,
   * catch the first home picture.
   *
-	* @param {string} roomPhoto
-	*/
+  * @param {string} roomPhoto
+  */
   renderRoomPhoto(roomPhoto = this.props.data.homePhotosWithOrder[0].split(',')[0]) {
     const style = {
       'backgroundImage': `url(${domain + roomPhoto})`,
@@ -35,7 +35,7 @@ class Card extends Component {
 
   /***
   * Render the price with the respective currency
-	**/
+  **/
   renderPrice(price) {
     const availableCurrencies = {
       'EUR': '€',
