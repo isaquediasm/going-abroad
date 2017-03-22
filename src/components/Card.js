@@ -33,20 +33,21 @@ class Card extends Component {
     return <div className="image" style={style}></div>;
   }
 
+  /**
+	* Render the price with the respective currency
+	**/
   renderPrice(price) {
     const availableCurrencies = {
       'EUR': '€',
       'USD': '$'
-    }
-
-    let userCurrency = availableCurrencies[this.props.currency];
+    };
+    const userCurrency = availableCurrencies[this.props.currency];
 
     return <div className="price">{ userCurrency + price.toFixed(2) }</div>
   }
 
   render() {
     let { roomPhoto, hostPhoto, hostName, homeCity, price, interestedLanguages } = this.props.data;
-
     const languages = interestedLanguages && interestedLanguages
       .map((lang, idx) => <span key={idx}>{lang}</span>);
 
